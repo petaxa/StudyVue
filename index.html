@@ -41,6 +41,28 @@
         </ol>
     </div>
 
+    <!-- テンプレート構文 -->
+    <div id='template-syntax'>
+        <!-- テキスト -->
+        <span>Message:{{msg}}</span>
+        <!-- v-once -->
+        <span v-once>this will never change:{{msg}}</span>
+        <!-- rawHTML -->
+        <p>Using v-html directive: <span v-html='rawHtml'></span></p>
+        <!-- v-bind -->
+        <!-- HTML属性内部でmustacheを使うため -->
+        <div v-bind:id="dynamicId"></div>
+        <button v-bind:disabled="isButtonDisabled">button</button>
+        <!-- JS syntax -->
+        <!-- 単一の式のみ動作 -->
+        <div>{{number + 1}}</div>
+    </div>
+    <div id="computed-basics">
+        <p>Has published books:</p>
+        <span>{{publishedBookMessage}}</span>
+    </div>
+
+
     <script src='script.js'></script>
 </body>
 </html>
