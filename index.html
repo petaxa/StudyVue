@@ -12,32 +12,42 @@
         Counter: {{counter}}
         time:{{message}}
     </div>
+
     <div id="bind-attribute">
         <span v-bind:title="message">
             Hover your mouse over me for a few seconds to see my dynamically boud title.
         </span>
     </div>
+
     <div id="event-handling">
         <p>{{status}}:{{message}}</p>
         <button v-on:click="reverseMessage">reverse message</button>
     </div>
+
     <div id="conditional-rendering">
         <span v-if="seen">
             now you see me
         </span>
         <button v-on:click='toggleSeen'>toggle</button>
     </div>
+
     <div id="list-rendering">
         <ol>
             <li v-for="todo in todos">{{todo.text}}</li>
         </ol>
     </div>
+
     <div id='components-app'>
         <ol>
             <todo-item
             v-for="item in groceryList"
             v-bind:todo="item"
             v-bind:key="item.id"></todo-item>
+        </ol>
+        <ol>
+            <li v-for="(value,name,index) in myObject">
+                {{index}}.{{name}}:{{value}}
+            </li>
         </ol>
     </div>
 
@@ -57,10 +67,39 @@
         <!-- 単一の式のみ動作 -->
         <div>{{number + 1}}</div>
     </div>
+
     <div id="computed-basics">
         <p>Has published books:</p>
         <span>{{publishedBookMessage}}</span>
     </div>
+
+    <!-- isActiveの真偽によってactiveの有無が変化する -->
+    <div :class="{active:isActive}"></div>
+
+    <!-- クラスをリストとして渡せる。 -->
+    <div :class="[activeClass,errorClass]"></div>
+
+    <!-- 条件分岐 -->
+    <h1 v-if="awesome">Vue is awesome.</h1>
+    <h1 v-else-if="elif">elif</h1>
+    <h1 v-else>oh no</h1>
+    <!-- まとめて分岐させたい -->
+    <!-- 描画にtemplate要素は含まれない。 -->
+    <template v-if="ok">
+        <h1>title</h1>
+        <p>hoge</p>
+    </template>
+    
+    <div id="v-model-basic">
+        <input v-model="message" placeholder="edit me" type="text">
+        <p>{{message}}</p>
+    </div>
+
+    <div id="v-model-checkbox">
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{checked}}</label>
+    </div>
+    <!-- カスタムinputなるものもあるらしい -->
 
 
     <script src='script.js'></script>

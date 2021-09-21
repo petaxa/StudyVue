@@ -86,10 +86,15 @@ const ComponentsApp = {
                 { id: 0, text: 'vegetables' },
                 { id: 1, text: 'cheese' },
                 { id: 2, text: 'whatever else humans are supposed to eat' }
-            ]
+            ],
+            myObject:{
+                titile: 'title',
+                author: 'Jane Doe',
+            }
         }
     }
 }
+Vue.createApp(ComponentsApp).mount('#components-app')
 
 //テンプレート構文
 //コンポーネントの登録より後ろにやったら動かなかった。
@@ -127,6 +132,22 @@ Vue.createApp({
     }
 }).mount('#computed-basics')
 
+Vue.createApp({
+    data(){
+        return{
+            message:''
+        }
+    }
+}).mount('#v-model-basic')
+
+Vue.createApp({
+    data(){
+        return{
+            checked:false
+        }
+    }
+}).mount('#v-model-checkbox')
+
 //アプリケーションとコンポーネント
 //アプリケーションインスタンスを作成
 const app = Vue.createApp(ComponentsApp)
@@ -155,6 +176,11 @@ Vue.createApp({
     }
 })
 
-
-
+//要素が複数ある場合、どの要素がHTML側で定義したclassを受け取るか定義する。→ $attrs.class
+app.component('my-component',{
+    template:`
+        <p :class="$attrs.class>hi!</p>
+        <span>this is a child</span>
+    `
+})
 
